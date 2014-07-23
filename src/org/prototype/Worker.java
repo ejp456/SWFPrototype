@@ -16,9 +16,8 @@ import com.amazonaws.services.simpleworkflow.flow.WorkflowWorker;
 public class Worker {
 	public static void main(String[] args) throws Exception {
 	     ClientConfiguration config = new ClientConfiguration().withSocketTimeout(70*1000);
-
-	     String swfAccessId = "Insert Access Id" ;
-	     String swfSecretKey = "Insert Secret Key";
+	     String swfAccessId = System.getenv("AccessId") ;
+	     String swfSecretKey = System.getenv("SecretKey");
 	     AWSCredentials awsCredentials = new BasicAWSCredentials(swfAccessId, swfSecretKey);
 
 	     AmazonSimpleWorkflow service = new AmazonSimpleWorkflowClient(awsCredentials, config);

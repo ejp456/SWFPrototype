@@ -7,6 +7,6 @@ import com.amazonaws.services.simpleworkflow.flow.annotations.WorkflowRegistrati
 @Workflow
 @WorkflowRegistrationOptions(defaultExecutionStartToCloseTimeoutSeconds = 300, defaultTaskStartToCloseTimeoutSeconds = 10)
 public interface FileProcessingWorkflow {
-	@Execute(name = "ProcessFile", version = "3.0")
+	@Execute(name = "ProcessFile", version = "4.0")
 	public void processFile(String fileName);
 }
