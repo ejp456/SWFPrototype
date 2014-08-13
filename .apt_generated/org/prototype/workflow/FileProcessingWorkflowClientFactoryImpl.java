@@ -37,7 +37,7 @@ public class FileProcessingWorkflowClientFactoryImpl extends WorkflowClientFacto
             StartWorkflowOptions options, DataConverter dataConverter, GenericWorkflowClient genericClient) {
         WorkflowType workflowType = new WorkflowType();
         workflowType.setName("ProcessFile");
-        workflowType.setVersion("4.0");
+        workflowType.setVersion("5.0");
         return new FileProcessingWorkflowClientImpl(execution, workflowType, options, dataConverter, genericClient);
     }
    

@@ -3,6 +3,8 @@ package org.prototype;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -24,9 +26,8 @@ import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflowClient;
 
 public class PrototypeMain {
 	public static void main(String[] args){
-		ClientConfiguration config = new ClientConfiguration().withSocketTimeout(70*1000);
+		 ClientConfiguration config = new ClientConfiguration().withSocketTimeout(70*1000);
 
-	     String test = System.getenv("test");
 	     String swfAccessId = System.getenv("AccessId") ;
 	     String swfSecretKey = System.getenv("SecretKey");
 	     AWSCredentials awsCredentials = new BasicAWSCredentials(swfAccessId, swfSecretKey);
@@ -39,8 +40,11 @@ public class PrototypeMain {
 	     FileProcessingWorkflowClientExternalFactory factory = new FileProcessingWorkflowClientExternalFactoryImpl(service, domain);
 	     FileProcessingWorkflowClientExternal processor = factory.getClient("someID");
 	     //Start workflow process
-	     processor.processFile("Test.xml");
-	     processor.processFile("Invalid.xml");
+	     List<String> files = new ArrayList<String>();
+	     files.add("Invalid.xml");
+	     files.add("Test.xml");
+	     files.add("NewValid.xml");
+	     processor.processFile(files);
 	}
 	
 }

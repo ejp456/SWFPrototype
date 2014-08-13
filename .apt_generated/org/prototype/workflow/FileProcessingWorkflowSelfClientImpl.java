@@ -32,42 +32,42 @@ public class FileProcessingWorkflowSelfClientImpl extends WorkflowSelfClientBase
     }
 
     @Override
-    public final void processFile(java.lang.String fileName) { 
-        processFileImpl(Promise.asPromise(fileName), (StartWorkflowOptions)null);
+    public final void processFile(java.util.List<java.lang.String> files) { 
+        processFileImpl(Promise.asPromise(files), (StartWorkflowOptions)null);
     }
 
     @Override
-    public final void processFile(java.lang.String fileName, Promise<?>... waitFor) { 
-        processFileImpl(Promise.asPromise(fileName), (StartWorkflowOptions)null, waitFor);
+    public final void processFile(java.util.List<java.lang.String> files, Promise<?>... waitFor) { 
+        processFileImpl(Promise.asPromise(files), (StartWorkflowOptions)null, waitFor);
     }
     
     @Override
-    public final void processFile(java.lang.String fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
-        processFileImpl(Promise.asPromise(fileName), optionsOverride, waitFor);
+    public final void processFile(java.util.List<java.lang.String> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
+        processFileImpl(Promise.asPromise(files), optionsOverride, waitFor);
     }
     
     @Override
-    public final void processFile(Promise<java.lang.String> fileName) {
-        processFileImpl(fileName, (StartWorkflowOptions)null);
+    public final void processFile(Promise<java.util.List<java.lang.String>> files) {
+        processFileImpl(files, (StartWorkflowOptions)null);
     }
 
     @Override
-    public final void processFile(Promise<java.lang.String> fileName, Promise<?>... waitFor) {
-        processFileImpl(fileName, (StartWorkflowOptions)null, waitFor);
+    public final void processFile(Promise<java.util.List<java.lang.String>> files, Promise<?>... waitFor) {
+        processFileImpl(files, (StartWorkflowOptions)null, waitFor);
     }
 
     @Override
-    public final void processFile(Promise<java.lang.String> fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
-        processFileImpl(fileName, optionsOverride, waitFor);
+    public final void processFile(Promise<java.util.List<java.lang.String>> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
+        processFileImpl(files, optionsOverride, waitFor);
     }
     
-    protected void processFileImpl(final Promise<java.lang.String> fileName, final StartWorkflowOptions schedulingOptionsOverride, Promise<?>... waitFor) {
-        new Task(new Promise[] { fileName, new AndPromise(waitFor) }) {
+    protected void processFileImpl(final Promise<java.util.List<java.lang.String>> files, final StartWorkflowOptions schedulingOptionsOverride, Promise<?>... waitFor) {
+        new Task(new Promise[] { files, new AndPromise(waitFor) }) {
     		@Override
 			protected void doExecute() throws Throwable {
                 ContinueAsNewWorkflowExecutionParameters _parameters_ = new ContinueAsNewWorkflowExecutionParameters();
                 Object[] _input_ = new Object[1];
-                _input_[0] = fileName.get();
+                _input_[0] = files.get();
                 String _stringInput_ = dataConverter.toData(_input_);
 				_parameters_.setInput(_stringInput_);
 				_parameters_ = _parameters_.createContinueAsNewParametersFromOptions(schedulingOptions, schedulingOptionsOverride);

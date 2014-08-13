@@ -22,38 +22,38 @@ class FileProcessingWorkflowClientImpl extends WorkflowClientBase implements Fil
     }
     
     @Override
-    public final Promise<Void> processFile(java.lang.String fileName) { 
-        return processFile(Promise.asPromise(fileName), (StartWorkflowOptions)null);
+    public final Promise<Void> processFile(java.util.List<java.lang.String> files) { 
+        return processFile(Promise.asPromise(files), (StartWorkflowOptions)null);
     }
     
     @Override
-    public final Promise<Void> processFile(java.lang.String fileName, Promise<?>... waitFor) {
-        return processFile(Promise.asPromise(fileName), (StartWorkflowOptions)null, waitFor);
+    public final Promise<Void> processFile(java.util.List<java.lang.String> files, Promise<?>... waitFor) {
+        return processFile(Promise.asPromise(files), (StartWorkflowOptions)null, waitFor);
     }
     
     
     @Override
     
-    public final Promise<Void> processFile(java.lang.String fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
-        return processFile(Promise.asPromise(fileName), optionsOverride, waitFor);
-    }
-
-    @Override
-    public final Promise<Void> processFile(Promise<java.lang.String> fileName) {
-        return processFile(fileName, (StartWorkflowOptions)null);
+    public final Promise<Void> processFile(java.util.List<java.lang.String> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
+        return processFile(Promise.asPromise(files), optionsOverride, waitFor);
     }
 
     @Override
-    public final Promise<Void> processFile(Promise<java.lang.String> fileName, Promise<?>... waitFor) {
-        return processFile(fileName, (StartWorkflowOptions)null, waitFor);
+    public final Promise<Void> processFile(Promise<java.util.List<java.lang.String>> files) {
+        return processFile(files, (StartWorkflowOptions)null);
+    }
+
+    @Override
+    public final Promise<Void> processFile(Promise<java.util.List<java.lang.String>> files, Promise<?>... waitFor) {
+        return processFile(files, (StartWorkflowOptions)null, waitFor);
     }
 
     @Override
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public final Promise<Void> processFile(Promise<java.lang.String> fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
+    public final Promise<Void> processFile(Promise<java.util.List<java.lang.String>> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor) {
         Promise[] _input_ = new Promise[1];
-        _input_[0] = fileName;
+        _input_[0] = files;
         return (Promise) startWorkflowExecution(_input_, optionsOverride, Void.class, waitFor);
     }
     	

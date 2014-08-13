@@ -16,20 +16,23 @@ public class VerifyActivitiesImpl implements VerifyActivities {
 	@Override
 	public Boolean verifyFile(String fileName) throws ParserConfigurationException, SAXException, IOException {
 		Boolean containsValidString = false;
-		File fXmlFile = new File(fileName);
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(fXmlFile);
-		//optional, but recommended
-		//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-		doc.getDocumentElement().normalize();
-		NodeList nList = doc.getElementsByTagName("word");
-		for(int i=0;i<nList.getLength();i++){
-			 if(FizzBuzz(nList.item(i).getTextContent())){
-				 containsValidString=true;
-				 break;
+		if(fileName!=null){
+			File fXmlFile = new File(fileName);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(fXmlFile);
+			//optional, but recommended
+			//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getElementsByTagName("word");
+			for(int i=0;i<nList.getLength();i++){
+				 if(FizzBuzz(nList.item(i).getTextContent())){
+					 containsValidString=true;
+					 break;
+				 }
 			 }
-		 }
+		}
+	
 		return containsValidString;
 		
 	}

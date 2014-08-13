@@ -65,7 +65,7 @@ public class ImportActivitiesClientImpl extends ActivitiesClientBase implements 
 
         ActivityType activityType = new ActivityType();
 		activityType.setName("ImportActivities.importFile");
-		activityType.setVersion("4.0");
+		activityType.setVersion("5.0");
 
         Promise[] _input_ = new Promise[1];
         _input_[0] = filename;
