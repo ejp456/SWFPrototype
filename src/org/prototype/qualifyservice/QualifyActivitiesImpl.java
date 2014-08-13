@@ -21,21 +21,23 @@ public class QualifyActivitiesImpl implements QualifyActivities{
 	}
 	public Boolean containsPalindrome(String filename)throws SAXException, IOException, ParserConfigurationException{
 		Boolean containsPalindrome = false;
-		File fXmlFile = new File(filename);
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse(fXmlFile);
-		//optional, but recommended
-		//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-		doc.getDocumentElement().normalize();
-		NodeList nList = doc.getElementsByTagName("word");
-		for(int i=0;i<nList.getLength();i++){
-			 if(isPalindrome(nList.item(i).getTextContent())){
-				 containsPalindrome=true;
-				 System.out.println("Contains a palindrome");
-				 break;
+		if(filename!=null){
+			File fXmlFile = new File(filename);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(fXmlFile);
+			doc.getDocumentElement().normalize();
+			
+			NodeList nList = doc.getElementsByTagName("word");
+			for(int i=0;i<nList.getLength();i++){
+				 if(isPalindrome(nList.item(i).getTextContent())){
+					 containsPalindrome=true;
+					 System.out.println("Contains a palindrome");
+					 break;
+				 }
 			 }
-		 }
+		}
+	
 		return containsPalindrome;
 		
 	}

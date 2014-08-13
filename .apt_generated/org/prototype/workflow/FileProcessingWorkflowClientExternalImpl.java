@@ -21,15 +21,15 @@ class FileProcessingWorkflowClientExternalImpl extends WorkflowClientExternalBas
     }
 
     @Override
-    public void processFile(java.lang.String fileName) { 
-        processFile(fileName, null);
+    public void processFile(java.util.List<java.lang.String> files) { 
+        processFile(files, null);
     }
 
     @Override
-    public void processFile(java.lang.String fileName, StartWorkflowOptions startOptionsOverride) {
+    public void processFile(java.util.List<java.lang.String> files, StartWorkflowOptions startOptionsOverride) {
     
         Object[] _arguments_ = new Object[1]; 
-        _arguments_[0] = fileName;
+        _arguments_[0] = files;
         dynamicWorkflowClient.startWorkflowExecution(_arguments_, startOptionsOverride);
     }
 

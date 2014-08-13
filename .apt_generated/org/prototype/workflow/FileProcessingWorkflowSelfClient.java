@@ -12,10 +12,10 @@ import com.amazonaws.services.simpleworkflow.flow.WorkflowSelfClient;
 
 public interface FileProcessingWorkflowSelfClient extends WorkflowSelfClient
 {
-    void processFile(java.lang.String fileName);
-    void processFile(java.lang.String fileName, Promise<?>... waitFor);
-    void processFile(java.lang.String fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
-    void processFile(Promise<java.lang.String> fileName);
-    void processFile(Promise<java.lang.String> fileName, Promise<?>... waitFor);
-    void processFile(Promise<java.lang.String> fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
+    void processFile(java.util.List<java.lang.String> files);
+    void processFile(java.util.List<java.lang.String> files, Promise<?>... waitFor);
+    void processFile(java.util.List<java.lang.String> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
+    void processFile(Promise<java.util.List<java.lang.String>> files);
+    void processFile(Promise<java.util.List<java.lang.String>> files, Promise<?>... waitFor);
+    void processFile(Promise<java.util.List<java.lang.String>> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
 }

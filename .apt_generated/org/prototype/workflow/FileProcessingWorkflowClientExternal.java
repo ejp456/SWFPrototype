@@ -11,6 +11,6 @@ import com.amazonaws.services.simpleworkflow.flow.WorkflowClientExternal;
 
 public interface FileProcessingWorkflowClientExternal extends WorkflowClientExternal
 {
-    void processFile(java.lang.String fileName);
-    void processFile(java.lang.String fileName, StartWorkflowOptions optionsOverride);
+    void processFile(java.util.List<java.lang.String> files);
+    void processFile(java.util.List<java.lang.String> files, StartWorkflowOptions optionsOverride);
 }

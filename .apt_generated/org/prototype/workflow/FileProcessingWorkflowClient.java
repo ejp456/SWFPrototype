@@ -12,10 +12,10 @@ import com.amazonaws.services.simpleworkflow.flow.WorkflowClient;
 
 public interface FileProcessingWorkflowClient extends WorkflowClient
 {
-    Promise<Void> processFile(java.lang.String fileName);
-    Promise<Void> processFile(java.lang.String fileName, Promise<?>... waitFor);
-    Promise<Void> processFile(java.lang.String fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
-    Promise<Void> processFile(Promise<java.lang.String> fileName);
-    Promise<Void> processFile(Promise<java.lang.String> fileName, Promise<?>... waitFor);
-    Promise<Void> processFile(Promise<java.lang.String> fileName, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
+    Promise<Void> processFile(java.util.List<java.lang.String> files);
+    Promise<Void> processFile(java.util.List<java.lang.String> files, Promise<?>... waitFor);
+    Promise<Void> processFile(java.util.List<java.lang.String> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
+    Promise<Void> processFile(Promise<java.util.List<java.lang.String>> files);
+    Promise<Void> processFile(Promise<java.util.List<java.lang.String>> files, Promise<?>... waitFor);
+    Promise<Void> processFile(Promise<java.util.List<java.lang.String>> files, StartWorkflowOptions optionsOverride, Promise<?>... waitFor);
 }
